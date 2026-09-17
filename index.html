@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Explore weather, temperature and travel English across 18 countries." />
+  <title>Little World Explorer</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230c7c86'/%3E%3Cpath d='M10 35c12-4 22-12 43-17-8 10-18 18-32 26l-3 10-5-1 2-12-5-6Z' fill='%23fff4cc'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="Little World Explorer home">
+      <span class="brand-mark">✈</span>
+      <span><strong>little world</strong><small>BIG ADVENTURES, LITTLE EXPLORERS</small></span>
+    </a>
+    <div class="header-actions">
+      <button class="quiet-button" id="soundButton" type="button" aria-pressed="true">♫ Sound on</button>
+      <button class="passport-button" id="passportButton" type="button">▧ My passport <span id="passportCount">0 / 18</span></button>
+    </div>
+  </header>
+
+  <main id="top">
+    <nav class="steps" aria-label="Your trip progress">
+      <span class="step active" data-step="1"><b>1</b> Pick a city</span>
+      <span class="step" data-step="2"><b>2</b> Pack your bag</span>
+      <span class="step" data-step="3"><b>3</b> Let's fly!</span>
+    </nav>
+
+    <section class="hero" aria-labelledby="page-title">
+      <div class="hero-copy">
+        <div><p class="eyebrow">YOUR NEXT LITTLE ADVENTURE</p><h1 id="page-title">Where shall we go?</h1></div>
+        <p class="intro">Pick a pin. Check the weather. Pack your bag. Then fly!</p>
+        <div class="chooser">
+          <label for="citySelect">Choose a city</label>
+          <div class="chooser-row">
+            <select id="citySelect"></select>
+            <button id="surpriseButton" class="surprise-button" type="button">⚄ Surprise me!</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="map-stage" id="mapStage" aria-label="Interactive world map with 18 destinations">
+        <div class="map-title">
+          <strong>✧ Explore the world</strong>
+          <div class="map-mode-toggle" role="group" aria-label="Map label mode">
+            <button class="active" id="placesMode" type="button" aria-pressed="true">地點 Places</button>
+            <button id="countriesMode" type="button" aria-pressed="false">國家中英 Countries</button>
+          </div>
+          <small>18 cities · 6 continents</small>
+        </div>
+        <div class="map-canvas" id="mapCanvas">
+          <img src="world-map.png" alt="A hand-painted world map" />
+          <svg class="flight-route" id="flightRoute" viewBox="0 0 1000 560" preserveAspectRatio="none" aria-hidden="true">
+            <path id="routePath" d="" />
+          </svg>
+          <div class="map-markers" id="mapMarkers"></div>
+          <img class="flight-plane" id="flightPlane" src="cute-plane.png" alt="" />
+        </div>
+        <div class="arrival-banner" id="arrivalBanner" role="status"></div>
+        <div class="map-key"><span>移到地點落下圖釘 · 點城市聽英文</span><span>🏠 Start: Taiwan</span></div>
+        <div class="zoom-controls" aria-label="Map zoom controls">
+          <button id="zoomOut" type="button" aria-label="Zoom out">−</button>
+          <button id="zoomReset" type="button" aria-label="Reset map zoom">100%</button>
+          <button id="zoomIn" type="button" aria-label="Zoom in">＋</button>
+        </div>
+      </div>
+
+      <article class="weather-card" aria-live="polite">
+        <div class="destination-heading">
+          <div class="flag-tile" id="flag">🇹🇼</div>
+          <div>
+            <p class="eyebrow">YOUR DESTINATION</p>
+            <h2 id="cityName">Taipei</h2>
+            <p id="countryName">Taiwan · 25.0° N</p>
+          </div>
+        </div>
+        <button class="listen-button" id="listenButton" type="button" aria-label="Listen to the weather sentence">🔊 Listen & say it</button>
+        <div class="weather-main">
+          <span class="weather-icon" id="weatherIcon">⛅</span>
+          <div><strong id="temperature">--°C</strong><span id="weatherLabel">Checking the weather…</span></div>
+        </div>
+        <p class="practice-sentence" id="practiceSentence">Taipei. It is partly cloudy and warm. It is 24 degrees.</p>
+        <div class="weather-details">
+          <span id="localTime">Local time: --:--</span>
+          <span id="range">Low --°C / High --°C</span>
+          <span id="distance">From Taiwan: -- km</span>
+        </div>
+        <p class="weather-note" id="weatherNote">Live forecast from Open-Meteo</p>
+        <button class="primary-button" id="packButton" type="button">Let's pack →</button>
+      </article>
+    </section>
+
+    <section class="destinations" aria-labelledby="destinations-title">
+      <div class="section-heading">
+        <div><p class="eyebrow">18 COUNTRIES TO SAY HELLO</p><h2 id="destinations-title">Find your next stop</h2></div>
+        <p>Weather changes around the world. Compare nearby places with faraway adventures.</p>
+      </div>
+      <div class="country-grid" id="countryGrid"></div>
+    </section>
+
+    <dialog id="packDialog">
+      <form method="dialog" class="dialog-card">
+        <button class="dialog-close" value="cancel" aria-label="Close">×</button>
+        <p class="eyebrow">PACK FOR <span id="packCity">TAIPEI</span></p>
+        <h2>What should we bring?</h2>
+        <p id="packPrompt">Choose the things that match today's weather.</p>
+        <div class="packing-grid" id="packingGrid"></div>
+        <button class="primary-button" id="flyButton" type="button">Check my bag</button>
+        <p class="pack-result" id="packResult" role="status"></p>
+      </form>
+    </dialog>
+
+    <dialog id="passportDialog">
+      <form method="dialog" class="dialog-card passport-card">
+        <button class="dialog-close" value="cancel" aria-label="Close">×</button>
+        <p class="eyebrow">MY PASSPORT</p>
+        <h2>Places I have explored</h2>
+        <div id="passportGrid" class="passport-grid"></div>
+      </form>
+    </dialog>
+  </main>
+
+  <footer><span>little world · English through adventure</span><span>Live forecasts · Made for young explorers</span></footer>
+  <script src="app.js"></script>
+</body>
+</html>
