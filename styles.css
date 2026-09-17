@@ -43,15 +43,13 @@ h2 { font-size: clamp(1.8rem, 3vw, 2.7rem); }
 select { flex: 1; min-width: 0; border: 2px solid white; border-radius: 14px; background: white; color: var(--ink); padding: 14px; outline: none; box-shadow: 0 5px 20px rgba(12, 124, 134, .08); }
 select:focus { border-color: var(--teal); }
 .surprise-button { border: 0; border-radius: 14px; padding: 0 16px; color: white; background: var(--coral); font-weight: 800; }
+.surprise-button small { display: block; margin-top: 2px; font-size: .66rem; font-weight: 700; opacity: .88; }
 .map-stage { min-height: 520px; position: relative; overflow: hidden; border-radius: 24px; background: #087fa4; box-shadow: var(--shadow); border: 1px solid var(--line); isolation: isolate; padding-top: 52px; }
 .map-canvas { position: absolute; inset: 52px 0 0; transform-origin: center; cursor: grab; touch-action: none; will-change: transform; }
 .map-canvas.dragging { cursor: grabbing; }
 .map-canvas > img:first-child { width: 100%; height: 100%; position: absolute; inset: 0; object-fit: cover; user-select: none; pointer-events: none; }
 .map-title { position: absolute; inset: 0 0 auto; height: 52px; padding: 0 20px; z-index: 7; display: flex; align-items: center; justify-content: space-between; background: rgba(255,253,244,.96); color: var(--deep); font-weight: 900; }
 .map-title small { color: var(--muted); font-weight: 700; }
-.map-mode-toggle { display: flex; padding: 3px; border: 1px solid var(--line); border-radius: 10px; background: #edf5ef; }
-.map-mode-toggle button { border: 0; border-radius: 7px; padding: 6px 10px; background: transparent; color: var(--muted); font-size: .72rem; font-weight: 900; }
-.map-mode-toggle button.active { background: white; color: var(--deep); box-shadow: 0 2px 7px rgba(7,50,55,.12); }
 .map-markers, .flight-route { position: absolute; inset: 0; width: 100%; height: 100%; }
 .map-pin { position: absolute; transform: translate(-50%, -50%); width: 30px; height: 38px; border: 0; padding: 0; background: transparent; z-index: 3; }
 .map-pin::before { content: ""; position: absolute; left: 50%; bottom: 2px; width: 7px; height: 7px; translate: -50% 0; border: 2px solid white; border-radius: 50%; background: var(--teal); box-shadow: 0 2px 6px rgba(4,44,58,.42); transition: width .18s, height .18s, background .18s; }
@@ -62,7 +60,6 @@ select:focus { border-color: var(--teal); }
 .map-pin.active::before { width: 11px; height: 11px; background: var(--sun); }
 .map-pin-label { position: absolute; transform: translate(-50%, 8px); padding: 4px 7px; border-radius: 7px; color: var(--ink); background: rgba(255,255,255,.93); font-size: .72rem; font-weight: 900; white-space: nowrap; pointer-events: none; opacity: 0; transition: opacity .18s, scale .18s; z-index: 6; box-shadow: 0 2px 6px rgba(4,44,58,.15); }
 .map-pin:hover + .map-pin-label, .map-pin:focus-visible + .map-pin-label, .map-pin.active + .map-pin-label { opacity: 1; scale: 1.06; }
-.country-mode .map-pin-label { opacity: .96; padding: 6px 9px; font-size: clamp(.78rem, 1.15vw, 1rem); color: var(--deep); }
 @keyframes pin-drop { from { transform: translate(-50%, -40px) rotate(-45deg) scale(.55); } to { transform: translate(-50%, 0) rotate(-45deg) scale(1); } }
 .map-key { position: absolute; left: 13px; bottom: 13px; display: flex; gap: 7px; z-index: 12; }
 .map-key span { padding: 6px 9px; border-radius: 999px; background: rgba(255,255,255,.9); color: var(--ink); font-size: .7rem; font-weight: 800; }
@@ -105,6 +102,7 @@ select:focus { border-color: var(--teal); }
 .country-card.active { border: 2px solid var(--teal); background: #eaf8f4; padding: 16px 11px; }
 .country-card .flag { font-size: 1.9rem; display: block; margin-bottom: 7px; }
 .country-card strong { display: block; font-size: .92rem; }
+.country-card strong span { color: var(--teal); font-size: .76rem; font-weight: 800; }
 .country-card small { color: var(--muted); }
 dialog { width: min(620px, calc(100% - 26px)); border: 0; border-radius: 25px; padding: 0; box-shadow: 0 30px 90px rgba(7,50,55,.3); background: var(--paper); }
 dialog::backdrop { background: rgba(7,50,55,.54); backdrop-filter: blur(5px); }
@@ -140,10 +138,8 @@ footer { padding: 26px clamp(18px,5vw,72px); background: var(--ink); color: #d4e
   .hero-copy .intro { margin: 13px 0 20px; }
   .map-stage { min-height: 300px; }
   .map-title { padding: 0 8px; }
-  .map-title > strong, .map-title > small { display: none; }
-  .map-mode-toggle { margin: 0 auto; }
+  .map-title > small { display: none; }
   .map-pin-label { font-size: .66rem; }
-  .country-mode .map-pin-label { display: block; font-size: .72rem; }
   .map-key span:last-child { display: none; }
   .zoom-controls button { min-width: 36px; height: 36px; }
   .chooser-row { flex-direction: column; }

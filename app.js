@@ -36,7 +36,6 @@ const packingItems = [
 let selectedIndex = 1;
 let latestWeather = { temp: 24, min: 21, max: 28, code: 2 };
 let soundOn = true;
-let mapLabelMode = 'places';
 const visited = new Set(JSON.parse(localStorage.getItem('little-world-visited') || '[]'));
 const selectedPack = new Set();
 
@@ -97,7 +96,7 @@ function buildDestinationControls() {
     card.className = 'country-card';
     card.type = 'button';
     card.dataset.index = index;
-    card.innerHTML = `<span class="flag">${place.flag}</span><strong>${place.country}</strong><small>${place.city}</small>`;
+    card.innerHTML = `<span class="flag">${place.flag}</span><strong>${place.countryZh} <span>${place.country}</span></strong><small>${place.city}</small>`;
     card.addEventListener('click', () => chooseCity(index, true));
     grid.appendChild(card);
 
@@ -122,19 +121,6 @@ function buildDestinationControls() {
   select.value = selectedIndex;
 }
 
-function setMapLabelMode(mode) {
-  mapLabelMode = mode;
-  $('mapCanvas').classList.toggle('country-mode', mode === 'countries');
-  $('placesMode').classList.toggle('active', mode === 'places');
-  $('countriesMode').classList.toggle('active', mode === 'countries');
-  $('placesMode').setAttribute('aria-pressed', mode === 'places');
-  $('countriesMode').setAttribute('aria-pressed', mode === 'countries');
-  document.querySelectorAll('.map-pin-label').forEach(label => {
-    const place = cities[Number(label.dataset.index)];
-    label.textContent = mode === 'countries' ? `${place.countryZh}  ${place.country}` : place.city;
-  });
-}
-
 function distanceFromTaiwan(place) {
   const taiwan = cities[1];
   const toRad = value => value * Math.PI / 180;
@@ -149,6 +135,7 @@ async function chooseCity(index, shouldSpeak = false) {
   select.value = selectedIndex;
   document.querySelectorAll('.country-card').forEach((card, i) => card.classList.toggle('active', i === selectedIndex));
   document.querySelectorAll('.map-pin').forEach((pin, i) => pin.classList.toggle('active', i === selectedIndex));
+  document.querySelectorAll('.map-pin-label').forEach((label, i) => { label.textContent = i === selectedIndex ? cities[i].countryZh : cities[i].city; });
   $('flag').textContent = place.flag;
   $('cityName').textContent = place.city;
   $('countryName').textContent = `${place.country} · ${Math.abs(place.lat).toFixed(1)}° ${place.lat >= 0 ? 'N' : 'S'}`;
@@ -297,8 +284,6 @@ $('packDialog').addEventListener('close', () => setStep(visited.has(cities[selec
 $('zoomIn').addEventListener('click', () => setMapZoom(mapZoom + .25));
 $('zoomOut').addEventListener('click', () => setMapZoom(mapZoom - .25));
 $('zoomReset').addEventListener('click', () => setMapZoom(1));
-$('placesMode').addEventListener('click', () => setMapLabelMode('places'));
-$('countriesMode').addEventListener('click', () => setMapLabelMode('countries'));
 $('mapCanvas').addEventListener('pointerdown', event => {
   if (mapZoom === 1 || event.target.closest('button')) return;
   dragStart = { pointerId: event.pointerId, x: event.clientX, y: event.clientY, panX: mapPan.x, panY: mapPan.y };
@@ -320,6 +305,5 @@ $('mapCanvas').addEventListener('pointerup', endMapDrag);
 $('mapCanvas').addEventListener('pointercancel', endMapDrag);
 
 buildDestinationControls();
-setMapLabelMode('places');
 updatePassport();
 chooseCity(selectedIndex);
