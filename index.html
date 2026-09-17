@@ -35,13 +35,20 @@
           <label for="citySelect">Choose a city</label>
           <div class="chooser-row">
             <select id="citySelect"></select>
-            <button id="surpriseButton" class="surprise-button" type="button">🎲 隨機選城市<br><small>Surprise me!</small></button>
+            <button id="surpriseButton" class="surprise-button" type="button">🎲 Surprise me!<br><small>隨機選城市</small></button>
           </div>
         </div>
       </div>
 
       <div class="map-stage" id="mapStage" aria-label="Interactive world map with 18 destinations">
-        <div class="map-title"><strong>✧ Explore the world</strong><small>18 cities · 6 continents</small></div>
+        <div class="map-title">
+          <strong>✧ Explore the world</strong>
+          <div class="map-language-toggle" role="group" aria-label="Map language">
+            <button id="mapEnglish" class="active" type="button" aria-pressed="true">English</button>
+            <button id="mapChinese" type="button" aria-pressed="false">中文</button>
+          </div>
+          <small>18 cities · 6 continents</small>
+        </div>
         <div class="map-canvas" id="mapCanvas">
           <img src="world-map.png" alt="A hand-painted world map" />
           <svg class="flight-route" id="flightRoute" viewBox="0 0 1000 560" preserveAspectRatio="none" aria-hidden="true">
@@ -51,7 +58,7 @@
           <img class="flight-plane" id="flightPlane" src="cute-plane.png" alt="" />
         </div>
         <div class="arrival-banner" id="arrivalBanner" role="status"></div>
-        <div class="map-key"><span>移到地點看城市 · 點選後顯示中文並聽英文</span><span>🏠 Start: Taiwan</span></div>
+        <div class="map-key"><span>Hover to see a city · 點選上方切換語言</span><span>🏠 Start: Taiwan</span></div>
         <div class="zoom-controls" aria-label="Map zoom controls">
           <button id="zoomOut" type="button" aria-label="Zoom out">−</button>
           <button id="zoomReset" type="button" aria-label="Reset map zoom">100%</button>

@@ -1,22 +1,22 @@
 const cities = [
-  { country: 'Korea', countryZh: '韓國', city: 'Seoul', flag: '🇰🇷', lat: 37.5665, lon: 126.9780 },
-  { country: 'Taiwan', countryZh: '台灣', city: 'Taipei', flag: '🇹🇼', lat: 25.0330, lon: 121.5654 },
-  { country: 'Australia', countryZh: '澳洲', city: 'Sydney', flag: '🇦🇺', lat: -33.8688, lon: 151.2093 },
-  { country: 'Japan', countryZh: '日本', city: 'Tokyo', flag: '🇯🇵', lat: 35.6762, lon: 139.6503 },
-  { country: 'France', countryZh: '法國', city: 'Paris', flag: '🇫🇷', lat: 48.8566, lon: 2.3522 },
-  { country: 'the USA', countryZh: '美國', city: 'New York', flag: '🇺🇸', lat: 40.7128, lon: -74.0060 },
-  { country: 'Vietnam', countryZh: '越南', city: 'Hanoi', flag: '🇻🇳', lat: 21.0278, lon: 105.8342 },
-  { country: 'the UK', countryZh: '英國', city: 'London', flag: '🇬🇧', lat: 51.5072, lon: -0.1276 },
-  { country: 'Spain', countryZh: '西班牙', city: 'Madrid', flag: '🇪🇸', lat: 40.4168, lon: -3.7038 },
-  { country: 'India', countryZh: '印度', city: 'New Delhi', flag: '🇮🇳', lat: 28.6139, lon: 77.2090 },
-  { country: 'Singapore', countryZh: '新加坡', city: 'Singapore', flag: '🇸🇬', lat: 1.3521, lon: 103.8198 },
-  { country: 'Canada', countryZh: '加拿大', city: 'Vancouver', flag: '🇨🇦', lat: 49.2827, lon: -123.1207 },
-  { country: 'Mexico', countryZh: '墨西哥', city: 'Mexico City', flag: '🇲🇽', lat: 19.4326, lon: -99.1332 },
-  { country: 'Brazil', countryZh: '巴西', city: 'Rio de Janeiro', flag: '🇧🇷', lat: -22.9068, lon: -43.1729 },
-  { country: 'Italy', countryZh: '義大利', city: 'Rome', flag: '🇮🇹', lat: 41.9028, lon: 12.4964 },
-  { country: 'China', countryZh: '中國', city: 'Beijing', flag: '🇨🇳', lat: 39.9042, lon: 116.4074 },
-  { country: 'Malaysia', countryZh: '馬來西亞', city: 'Kuala Lumpur', flag: '🇲🇾', lat: 3.1390, lon: 101.6869 },
-  { country: 'Kenya', countryZh: '肯亞', city: 'Nairobi', flag: '🇰🇪', lat: -1.2921, lon: 36.8219 }
+  { country: 'Korea', countryZh: '韓國', city: 'Seoul', cityZh: '首爾', flag: '🇰🇷', lat: 37.5665, lon: 126.9780 },
+  { country: 'Taiwan', countryZh: '台灣', city: 'Taipei', cityZh: '台北', flag: '🇹🇼', lat: 25.0330, lon: 121.5654 },
+  { country: 'Australia', countryZh: '澳洲', city: 'Sydney', cityZh: '雪梨', flag: '🇦🇺', lat: -33.8688, lon: 151.2093 },
+  { country: 'Japan', countryZh: '日本', city: 'Tokyo', cityZh: '東京', flag: '🇯🇵', lat: 35.6762, lon: 139.6503 },
+  { country: 'France', countryZh: '法國', city: 'Paris', cityZh: '巴黎', flag: '🇫🇷', lat: 48.8566, lon: 2.3522 },
+  { country: 'the USA', countryZh: '美國', city: 'New York', cityZh: '紐約', flag: '🇺🇸', lat: 40.7128, lon: -74.0060 },
+  { country: 'Vietnam', countryZh: '越南', city: 'Hanoi', cityZh: '河內', flag: '🇻🇳', lat: 21.0278, lon: 105.8342 },
+  { country: 'the UK', countryZh: '英國', city: 'London', cityZh: '倫敦', flag: '🇬🇧', lat: 51.5072, lon: -0.1276 },
+  { country: 'Spain', countryZh: '西班牙', city: 'Madrid', cityZh: '馬德里', flag: '🇪🇸', lat: 40.4168, lon: -3.7038 },
+  { country: 'India', countryZh: '印度', city: 'New Delhi', cityZh: '新德里', flag: '🇮🇳', lat: 28.6139, lon: 77.2090 },
+  { country: 'Singapore', countryZh: '新加坡', city: 'Singapore', cityZh: '新加坡', flag: '🇸🇬', lat: 1.3521, lon: 103.8198 },
+  { country: 'Canada', countryZh: '加拿大', city: 'Vancouver', cityZh: '溫哥華', flag: '🇨🇦', lat: 49.2827, lon: -123.1207 },
+  { country: 'Mexico', countryZh: '墨西哥', city: 'Mexico City', cityZh: '墨西哥城', flag: '🇲🇽', lat: 19.4326, lon: -99.1332 },
+  { country: 'Brazil', countryZh: '巴西', city: 'Rio de Janeiro', cityZh: '里約熱內盧', flag: '🇧🇷', lat: -22.9068, lon: -43.1729 },
+  { country: 'Italy', countryZh: '義大利', city: 'Rome', cityZh: '羅馬', flag: '🇮🇹', lat: 41.9028, lon: 12.4964 },
+  { country: 'China', countryZh: '中國', city: 'Beijing', cityZh: '北京', flag: '🇨🇳', lat: 39.9042, lon: 116.4074 },
+  { country: 'Malaysia', countryZh: '馬來西亞', city: 'Kuala Lumpur', cityZh: '吉隆坡', flag: '🇲🇾', lat: 3.1390, lon: 101.6869 },
+  { country: 'Kenya', countryZh: '肯亞', city: 'Nairobi', cityZh: '奈洛比', flag: '🇰🇪', lat: -1.2921, lon: 36.8219 }
 ];
 
 const weatherCodes = {
@@ -34,6 +34,7 @@ const packingItems = [
 ];
 
 let selectedIndex = 1;
+let mapLanguage = 'en';
 let latestWeather = { temp: 24, min: 21, max: 28, code: 2 };
 let soundOn = true;
 const visited = new Set(JSON.parse(localStorage.getItem('little-world-visited') || '[]'));
@@ -96,7 +97,7 @@ function buildDestinationControls() {
     card.className = 'country-card';
     card.type = 'button';
     card.dataset.index = index;
-    card.innerHTML = `<span class="flag">${place.flag}</span><strong>${place.countryZh} <span>${place.country}</span></strong><small>${place.city}</small>`;
+    card.innerHTML = `<span class="flag">${place.flag}</span><strong>${place.country}</strong><small>${place.city}</small><span class="card-zh">${place.countryZh} · ${place.cityZh}</span>`;
     card.addEventListener('click', () => chooseCity(index, true));
     grid.appendChild(card);
 
@@ -129,13 +130,29 @@ function distanceFromTaiwan(place) {
   return Math.round(6371 * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)));
 }
 
+function refreshMapLabels() {
+  document.querySelectorAll('.map-pin-label').forEach((label, index) => {
+    label.textContent = mapLanguage === 'zh' ? cities[index].cityZh : cities[index].city;
+  });
+}
+
+function setMapLanguage(language) {
+  mapLanguage = language;
+  const englishActive = language === 'en';
+  $('mapEnglish').classList.toggle('active', englishActive);
+  $('mapChinese').classList.toggle('active', !englishActive);
+  $('mapEnglish').setAttribute('aria-pressed', englishActive);
+  $('mapChinese').setAttribute('aria-pressed', !englishActive);
+  refreshMapLabels();
+}
+
 async function chooseCity(index, shouldSpeak = false) {
   selectedIndex = Number(index);
   const place = cities[selectedIndex];
   select.value = selectedIndex;
   document.querySelectorAll('.country-card').forEach((card, i) => card.classList.toggle('active', i === selectedIndex));
   document.querySelectorAll('.map-pin').forEach((pin, i) => pin.classList.toggle('active', i === selectedIndex));
-  document.querySelectorAll('.map-pin-label').forEach((label, i) => { label.textContent = i === selectedIndex ? cities[i].countryZh : cities[i].city; });
+  refreshMapLabels();
   $('flag').textContent = place.flag;
   $('cityName').textContent = place.city;
   $('countryName').textContent = `${place.country} · ${Math.abs(place.lat).toFixed(1)}° ${place.lat >= 0 ? 'N' : 'S'}`;
@@ -284,6 +301,8 @@ $('packDialog').addEventListener('close', () => setStep(visited.has(cities[selec
 $('zoomIn').addEventListener('click', () => setMapZoom(mapZoom + .25));
 $('zoomOut').addEventListener('click', () => setMapZoom(mapZoom - .25));
 $('zoomReset').addEventListener('click', () => setMapZoom(1));
+$('mapEnglish').addEventListener('click', () => setMapLanguage('en'));
+$('mapChinese').addEventListener('click', () => setMapLanguage('zh'));
 $('mapCanvas').addEventListener('pointerdown', event => {
   if (mapZoom === 1 || event.target.closest('button')) return;
   dragStart = { pointerId: event.pointerId, x: event.clientX, y: event.clientY, panX: mapPan.x, panY: mapPan.y };
@@ -305,5 +324,6 @@ $('mapCanvas').addEventListener('pointerup', endMapDrag);
 $('mapCanvas').addEventListener('pointercancel', endMapDrag);
 
 buildDestinationControls();
+setMapLanguage('en');
 updatePassport();
 chooseCity(selectedIndex);

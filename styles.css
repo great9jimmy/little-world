@@ -50,6 +50,9 @@ select:focus { border-color: var(--teal); }
 .map-canvas > img:first-child { width: 100%; height: 100%; position: absolute; inset: 0; object-fit: cover; user-select: none; pointer-events: none; }
 .map-title { position: absolute; inset: 0 0 auto; height: 52px; padding: 0 20px; z-index: 7; display: flex; align-items: center; justify-content: space-between; background: rgba(255,253,244,.96); color: var(--deep); font-weight: 900; }
 .map-title small { color: var(--muted); font-weight: 700; }
+.map-language-toggle { display: flex; gap: 3px; padding: 3px; border: 1px solid var(--line); border-radius: 999px; background: #fff; }
+.map-language-toggle button { border: 0; border-radius: 999px; padding: 6px 13px; background: transparent; color: var(--muted); font: inherit; font-size: .76rem; font-weight: 900; cursor: pointer; }
+.map-language-toggle button.active { background: var(--teal); color: #fff; }
 .map-markers, .flight-route { position: absolute; inset: 0; width: 100%; height: 100%; }
 .map-pin { position: absolute; transform: translate(-50%, -50%); width: 30px; height: 38px; border: 0; padding: 0; background: transparent; z-index: 3; }
 .map-pin::before { content: ""; position: absolute; left: 50%; bottom: 2px; width: 7px; height: 7px; translate: -50% 0; border: 2px solid white; border-radius: 50%; background: var(--teal); box-shadow: 0 2px 6px rgba(4,44,58,.42); transition: width .18s, height .18s, background .18s; }
@@ -102,8 +105,9 @@ select:focus { border-color: var(--teal); }
 .country-card.active { border: 2px solid var(--teal); background: #eaf8f4; padding: 16px 11px; }
 .country-card .flag { font-size: 1.9rem; display: block; margin-bottom: 7px; }
 .country-card strong { display: block; font-size: .92rem; }
-.country-card strong span { color: var(--teal); font-size: .76rem; font-weight: 800; }
 .country-card small { color: var(--muted); }
+.card-zh { display: none; margin-top: 8px; color: var(--teal); font-size: .82rem; font-weight: 900; }
+.country-card.active .card-zh { display: block; }
 dialog { width: min(620px, calc(100% - 26px)); border: 0; border-radius: 25px; padding: 0; box-shadow: 0 30px 90px rgba(7,50,55,.3); background: var(--paper); }
 dialog::backdrop { background: rgba(7,50,55,.54); backdrop-filter: blur(5px); }
 .dialog-card { padding: clamp(24px, 5vw, 42px); position: relative; }
@@ -139,6 +143,7 @@ footer { padding: 26px clamp(18px,5vw,72px); background: var(--ink); color: #d4e
   .map-stage { min-height: 300px; }
   .map-title { padding: 0 8px; }
   .map-title > small { display: none; }
+  .map-language-toggle button { padding: 5px 9px; }
   .map-pin-label { font-size: .66rem; }
   .map-key span:last-child { display: none; }
   .zoom-controls button { min-width: 36px; height: 36px; }
